@@ -49,7 +49,7 @@
 						<small>Gioacchino Mazzurco</a></small>
 					</p>
 				</section>
-
+<!--
 				<section>
 					<section>
 						<h2></h2>
@@ -59,7 +59,7 @@
 					</section>
 				</section>
 
-
+-->
 				<section>
 					<section>
 						<h2>Many firmwares...</h2>
@@ -74,13 +74,13 @@
 							<li>Buenosaires Libre &#8680; APRouter, Byzantinum, Obelysk</li>
 						</ul>
 						<p><br/>
-						<h2 class="fragment">...few developers...</h2>
+						<h2 class="fragment">...few developers</h2>
 						</p>
 					</section>
 
 					<section>
-						<h2>...let's make another one...</h2>
-						<h2>...but in a collaborative way!</h2>
+						<h2>Let's make another one...</h2>
+						<h2 class="fragment">...but in a collaborative way!</h2>
 						<table class="fragment"><tr><td width="60%">
 eigenNet + GUIFI + Altermundi + NinuxVerona + ...
 </td><td style="text-align:center;vertical-align:middle">
@@ -91,7 +91,7 @@ eigenNet + GUIFI + Altermundi + NinuxVerona + ...
 					<section>
 						<h2>How is it possible?</h2>
 						<p>Every community has different needs...</p>
-						<p>Let's make it modular!</p>
+						<p class="fragment">Let's make it modular!</p>
 					</section>
 
 				</section>
@@ -174,9 +174,6 @@ $(eval $(call BuildPackage,$(PKG_NAME)))
 						<pre><code>
 #!/usr/bin/lua
 
-local network = require("lime.network")
-local config = require("lime.config")
-local fs = require("nixio.fs")
 local libuci = require("uci")
 
 babeld_rtt = {}
@@ -189,7 +186,7 @@ function babeld_rtt.setup_interface(ifname, args)
 	uci:save("babel-rtt")
 end
 
---! For a proto module is mandatory babel_rtt.configure(args) method
+--! For a proto module is mandatory configure(args) method
 function babel_rtt.configure(args)
 	local uci = libuci:cursor()
 	uci:set("babel-rtt", "general", "metric", "rtt")
@@ -197,7 +194,7 @@ function babel_rtt.configure(args)
 	uci:save("babel-rtt")
 end
 
---! For a proto module is mandatory babel_rtt.clean() method
+--! For a proto module is mandatory apply() method
 function babeld_rtt.apply()
     os.execute("/etc/init.d/babeld-rtt restart")
 end
@@ -209,7 +206,13 @@ return babeld_rtt
 
 				</section>
 
-
+				<section>
+					<section>
+						<h2>IPv6</h2>
+						<p>Native support for IPv6.</p>
+						<p class="fragment">Mesh (using tinc-vpn) IPv6 tunnel broker for wireless communities: librenet6</p>
+					</section>
+				</section>
 
 
 

@@ -46,20 +46,13 @@
 					<h1>Libre-Mesh</h1>
 					<h3>Mesh networking made simple and modular.</h3>
 					<p>
-						<small>Gioacchino Mazzurco</a></small>
+						<small>G10h4ck</small>
 					</p>
-				</section>
-<!--
-				<section>
-					<section>
-						<h2></h2>
-						<p>
-							
-						</p>
-					</section>
+					<p>
+                                                <small>Hackmeeting 2014 - XM24, Bologna - 20140628</small>
+                                        </p>
 				</section>
 
--->
 				<section>
 					<section>
 						<h2>Many firmwares...</h2>
@@ -82,7 +75,7 @@
 						<h2>Let's make another one...</h2>
 						<h2 class="fragment">...but in a collaborative way!</h2>
 						<table class="fragment"><tr><td width="60%">
-eigenNet + GUIFI + Altermundi + NinuxVerona + ...
+eigenNet + GUIFI + Altermundi + NinuxVerona + NinuxBO ...
 </td><td style="text-align:center;vertical-align:middle">
  &#8680; Libre-Mesh
 </td></tr></table>
@@ -96,7 +89,6 @@ eigenNet + GUIFI + Altermundi + NinuxVerona + ...
 
 				</section>
 
-
 				<section>
 					<section>
 						<h2>Modular Architecture</h2>
@@ -105,14 +97,12 @@ eigenNet + GUIFI + Altermundi + NinuxVerona + ...
 					<section>
 						<h2>How to Make a <b>L</b>i<b>M</b>e Module</h2>
 						<p>Let's see an <a href="https://github.com/libre-mesh/lime-packages/commit/dbfdfc8caeff429262618ef94f581aeacaf2ca7c">example</a>.</p>
-					<p class="fragment">We're waiting for your pull requests!</p>
+						<p class="fragment">We're waiting for your pull requests!</p>
 					</section>
 				</section>
 
 				<section>
-					<section>
-						<h2><a href="http://libre-mesh.org/projects/libre-mesh/wiki/Network_Architecture" >Today's Network Architecture</a></h2>
-					</section>
+					<h2><a href="http://libre-mesh.org/projects/libre-mesh/wiki/Network_Architecture" >Today's Network Architecture</a></h2>
 				</section>
 
 				<section>
@@ -126,12 +116,6 @@ eigenNet + GUIFI + Altermundi + NinuxVerona + ...
 						<b>Makefile</b>
 						<pre>
 							<code>
-#
-# Copyright (C) 2006-2014 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v3.
-#
-
 include $(TOPDIR)/rules.mk
 
 LIME_BUILDDATE:=$(shell date +%Y%m%d_%H%M)
@@ -156,7 +140,8 @@ endef
 define Build/Compile
 	@rm -rf ./build || true
 	@cp -r ./src ./build
-	@sed -i '/^--!.*/d' build/*.lua
+	@sed -i '/^\s*--!.*/d' build/*.lua
+	@sed -i '/^\s*#\[Doc\]/d' build/*.sh	
 endef
 
 define Package/$(PKG_NAME)/install
@@ -207,19 +192,36 @@ return babeld_rtt
 				</section>
 
 				<section>
-					<section>
-						<h2>IPv6</h2>
-						<p>Native support for IPv6.</p>
-						<p class="fragment">Mesh (using tinc-vpn) IPv6 tunnel broker for wireless communities: librenet6</p>
-					</section>
+					<h2>IPv6</h2>
+					<p>Libre-Mesh aims to bring IPv6 native support everywhere.</p>
+					<p class="fragment">But what if IPv6 is not available in my town?</p>
+					<p class="fragment">Libre-Mesh is not just a firmware it offers a mesh IPv6 tunnel broker too: librenet6 <p/>
+					<div class="fragment">
+						<p>Why is it better then tunnel broker X?</p>
+						<ul>
+							<li>Is from the community</li>
+							<li>It is mesh</li>
+						</ul>
+					</div>
 				</section>
 
+				<section>
+					<h2>How to Get it ?</h2>
+					<p>
+						<b><a href="http://www.libre-mesh.org/projects/libre-mesh/wiki/Compile_Manually">Run GCC!</a></b>
+					</p>
+				</section>
 
-
-
-
-
-
+				<section>
+					<h2>Chef</h2>
+					<p>Ask the Chef server to compile a custom firmware image. 
+					</p>
+				</section>
+				
+				<section>
+					<h2>Questions?</h2>
+					<p class="fragment"><b>Let's flash!</b></p>
+				</section>
 
 			</div>
 
